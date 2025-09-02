@@ -12,15 +12,15 @@ from werkzeug.utils import secure_filename
 from functools import wraps
 
 app = Flask(__name__)
-app.secret_key = 'your_secret_key_here'  # Change this in production
+app.secret_key = 'satyasai@1933'  # Change this in production
 bcrypt = Bcrypt(app)
 
 # Database configuration
 db_config = {
-    'host': 'localhost',
-    'user': 'root',
-    'password': '',
-    'database': 'lmms_auth',
+    'host': 'bo4x0jjmprwx6f1ylw7q-mysql.services.clever-cloud.com',
+    'user': 'uahkh0cuhzlzllif',
+    'password': 'jaJkeZBeaNp8zqscMalJ',
+    'database': 'bo4x0jjmprwx6f1ylw7q',
     'charset': 'utf8mb4',
     'cursorclass': pymysql.cursors.DictCursor
 }
@@ -308,4 +308,5 @@ if __name__ == '__main__':
     # Create upload folder if it doesn't exist
     if not os.path.exists(UPLOAD_FOLDER):
         os.makedirs(UPLOAD_FOLDER)
+
     app.run(debug=True)
