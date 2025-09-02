@@ -1,11 +1,8 @@
-# from flask import Flask, render_template, request, redirect, url_for, session, flash, jsonify
-# from flask_bcrypt import Bcrypt
-# import pymysql
-# import re
-# from functools import wraps
+
 from flask import Flask, render_template, request, redirect, url_for, session, flash, jsonify, send_file
 from flask_bcrypt import Bcrypt
 import pymysql
+import pymysql.cursors
 import re
 import os
 from werkzeug.utils import secure_filename
@@ -17,10 +14,10 @@ bcrypt = Bcrypt(app)
 
 # Database configuration
 db_config = {
-    'host': 'bo4x0jjmprwx6f1ylw7q-mysql.services.clever-cloud.com',
-    'user': 'uahkh0cuhzlzllif',
-    'password': 'jaJkeZBeaNp8zqscMalJ',
-    'database': 'bo4x0jjmprwx6f1ylw7q',
+    'host': os.getenv('DB_HOST'),
+    'user': os.getenv('DB_USER'),
+    'password': os.getenv('DB_PASSWORD'),
+    'database': os.getenv('DB_NAME'),
     'charset': 'utf8mb4',
     'cursorclass': pymysql.cursors.DictCursor
 }
@@ -310,3 +307,4 @@ if __name__ == '__main__':
         os.makedirs(UPLOAD_FOLDER)
 
     app.run(debug=True)
+
