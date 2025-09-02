@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Panel - Virinchi Learning Platform</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      /* Add your custom styles here */
+      /* ====== HEADER STYLES ====== */
+      .site-header {
+        background-color: #00695c; /* Dark green */
+        text-align: center;
+        padding: 20px 0 0 0;
+        color: #fff;
+        font-family: Arial, sans-serif;
+      }
+
+      .logo-container {
+        margin-bottom: 10px;
+      }
+
+      .site-logo {
+        height: 80px;
+        width: auto;
+      }
+
+      .site-title {
+        font-size: 28px;
+        font-weight: bold;
+        margin: 10px 0 5px;
+        color: #ffffff;
+      }
+
+      .site-tagline {
+        font-size: 16px;
+        margin-bottom: 15px;
+        color: #e0e0e0;
+      }
+
+      /* ====== NAVIGATION BAR ====== */
+      .navbar {
+        background-color: #004d40; /* Slightly darker green */
+        padding: 0px 0;
+      }
+
+      .nav-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .nav-menu {
+        display: flex;
+        gap: 20px;
+      }
+
+      .nav-link {
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: bold;
+        color: #fff;
+        padding: 6px 12px;
+        border-radius: 4px;
+        transition: background 0.3s;
+      }
+
+      .nav-link:hover,
+      .nav-link.active {
+        background-color: #00796b; /* Highlight green */
+        color: #fff;
+      }
+      /* Hero Section */
+      .hero {
+        background: linear-gradient(to right, #6a11cb, #2575fc);
+        color: white;
+        text-align: center;
+        padding: 60px 20px;
+      }
+
+      .hero h2 {
+        font-size: 28px;
+        font-weight: bold;
+      }
+
+      .hero p {
+        font-size: 16px;
+        margin-top: 10px;
+      }
+
+      /* About Section */
+      .about {
+        padding: 40px 20px;
+        display: flex;
+        justify-content: center;
+      }
+
+      .about-card {
+        background: white;
+        padding: 20px;
+        max-width: 900px;
+        border-radius: 8px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .about-card h3 {
+        color: #006d5b;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Animated Background -->
+    <div class="animated-bg"></div>
+
+    <!-- Navigation Bar -->
+    <!-- <nav class="navbar user-navbar">
+
+        <div class="nav-container">
+            <div class="nav-logo">
+            <a href="{{ url_for('index') }}">     
+             <img
+              src="{{ url_for('static', filename='images/logo.jpg') }}"
+              alt="LMMS Logo"
+              class="logo-img"
+            />
+            <span class="logo-text">LMMS</span></a>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="{{ url_for('user_dashboard') }}" class="nav-link active">Dashboard</a>
+                <a href="#programs" class="nav-link">Programs</a>
+                <a href="{{ url_for('logout') }}" class="nav-link">Logout</a>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav> -->
+    <!-- Header Section -->
+    <header class="site-header">
+      <div class="logo-container">
+        <img
+          src="{{ url_for('static', filename='images/logo.jpg') }}"
+          alt="Logo"
+          class="site-logo"
+        />
+      </div>
+      <h1 class="site-title">Virinchi Educational and Welfare Society</h1>
+      <p class="site-tagline">Answer for Future</p>
+
+      <!-- Navigation Bar -->
+      <nav class="navbar">
+        <div class="nav-container">
+          <div class="nav-menu" id="nav-menu">
+            <a href="{{ url_for('admin_panel') }}" class="nav-link active"
+              >Home</a
+            >
+            <a href="#about" class="nav-link">About</a>
+            <a href="#programs" class="nav-link">Programs</a>
+            <a href="#contact" class="nav-link">Contact</a>
+            <a href="{{ url_for('logout') }}" class="nav-link">Logout</a>
+            <!-- <a href="{{ url_for('user_login') }}" class="nav-link">User Login</a>
+                <a href="{{ url_for('admin_login') }}" class="nav-link">Admin Login</a>
+                <a href="{{ url_for('signup') }}" class="nav-link">Signup</a> -->
+          </div>
+        </div>
+      </nav>
+    </header>
+    <!-- Hero Section -->
+    <section class="hero">
+      <h2>Empowering Communities through Education & Skill Development</h2>
+      <p>Promoting inclusive growth, opportunity, and sustainability</p>
+    </section>
+
+    <!-- About Us -->
+    <section class="about" id="about">
+      <div class="about-card">
+        <h3>About Us</h3>
+        <p>
+          Established in 2016 and headquartered in Achanta, Andhra Pradesh,
+          Virinchi Educational and Welfare Society is a registered non-profit
+          dedicated to promoting the welfare of Persons with Disabilities
+          (PWDs), empowering marginalized groups through education, skill
+          development, and employment support.
+        </p>
+      </div>
+    </section>
+
+    <!-- Hero Section -->
+    <section class="hero admin-hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1 class="hero-title">Admin Panel – Manage Learning Resources</h1>
+          <p class="hero-description">
+            Add or remove books, PDFs, and videos for students
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Content Management Section -->
+    <section class="content-management">
+      <div class="container">
+        <h2 class="section-title">Content Management</h2>
+
+        <div class="content-grid">
+          <!-- Add Content Card -->
+          <div class="content-card" id="add-content">
+            <h3 class="card-title">Add New Content</h3>
+
+            {% with messages = get_flashed_messages(with_categories=true) %} {%
+            if messages %} {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">
+              <i
+                class="fas fa-{% if category == 'success' %}check-circle{% else %}exclamation-circle{% endif %}"
+              ></i>
+              {{ message }}
+            </div>
+            {% endfor %} {% endif %} {% endwith %}
+
+            <form
+              action="{{ url_for('add_content') }}"
+              method="POST"
+              enctype="multipart/form-data"
+              class="content-form"
+            >
+              <div class="form-group">
+                <label for="title" class="form-label">Title</label>
+                <input
+                  type="text"
+                  class="form-input"
+                  id="title"
+                  name="title"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="description" class="form-label">Description</label>
+                <textarea
+                  class="form-input"
+                  id="description"
+                  name="description"
+                  rows="3"
+                  required
+                ></textarea>
+              </div>
+
+              <div class="form-group">
+                <label for="program_category" class="form-label"
+                  >Program Category</label
+                >
+                <select
+                  class="form-input"
+                  id="program_category"
+                  name="program_category"
+                  required
+                >
+                  <option value="">Select a category</option>
+                  <option value="Skill Development & Vocational Training">
+                    Skill Development & Vocational Training
+                  </option>
+                  <option value="Inclusive Education & Early Intervention">
+                    Inclusive Education & Early Intervention
+                  </option>
+                  <option value="Beautician course">Beautician course</option>
+                  <option value="Food and Beverages Associate">
+                    Food and Beverages Associate
+                  </option>
+                  <option value="Nursing Course">Nursing Course</option>
+                  <option value="Front Office Associate">
+                    Front Office Associate
+                  </option>
+                  <option value="Multi Skill Technician (Electrical)">
+                    Multi Skill Technician (Electrical)
+                  </option>
+                  <option value="Electrical Assembly Operator">
+                    Electrical Assembly Operator
+                  </option>
+                  <option value="Entrepreneurship & Life Skills Development">
+                    Entrepreneurship & Life Skills Development
+                  </option>
+                  <option value="Soft Skills & IT Training">
+                    Soft Skills & IT Training
+                  </option>
+                  <option value="Medical & Nursing Assistant Training">
+                    Medical & Nursing Assistant Training
+                  </option>
+                  <option value="Garment Making, Tailoring, Zardosi Work">
+                    Garment Making, Tailoring, Zardosi Work
+                  </option>
+                  <option value="Job Placement & Industry Tie-ups">
+                    Job Placement & Industry Tie-ups
+                  </option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="file_upload" class="form-label">Upload PDF</label>
+                <input
+                  type="file"
+                  class="form-input"
+                  id="file_upload"
+                  name="file_upload"
+                  accept=".pdf,.doc,.docx"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="video_link" class="form-label"
+                  >YouTube Video Link</label
+                >
+                <input
+                  type="url"
+                  class="form-input"
+                  id="video_link"
+                  name="video_link"
+                  placeholder="https://www.youtube.com/embed/..."
+                />
+              </div>
+
+              <button type="submit" class="btn btn-primary">
+                <i class="fas fa-plus-circle"></i> Add Content
+              </button>
+            </form>
+          </div>
+
+          <!-- Manage Content Card -->
+          <div class="content-card" id="manage-content">
+            <h3 class="card-title">Manage Existing Content</h3>
+
+            <div class="content-table-container">
+              <table class="content-table">
+                <thead>
+                  <tr>
+                    <th>Title</th>
+                    <th>Category</th>
+                    <th>Date Added</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for item in content %}
+                  <tr>
+                    <td>{{ item.title }}</td>
+                    <td>{{ item.program_category }}</td>
+                    <td>{{ item.created_at.strftime('%Y-%m-%d') }}</td>
+                    <td>
+                      <a
+                        href="{{ url_for('delete_content', content_id=item.id) }}"
+                        class="btn btn-danger btn-sm"
+                        onclick="return confirm('Are you sure you want to delete this content?')"
+                      >
+                        <i class="fas fa-trash"></i> Delete
+                      </a>
+                    </td>
+                  </tr>
+                  {% else %}
+                  <tr>
+                    <td colspan="4" class="text-center">
+                      No content available
+                    </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section class="programs-section">
+      <div class="container">
+        <h2 class="section-title">Our Programs</h2>
+
+        <div class="programs-grid">
+          <div class="program-card">
+            <div class="program-icon">
+              <i class="fas fa-tools"></i>
+            </div>
+            <h3>Skill Development & Vocational Training</h3>
+            <p>Practical training programs to develop marketable skills</p>
+            <div class="content-count">
+              {% for count in content_counts %} {% if count.program_category ==
+              'Skill Development & Vocational Training' %} {{ count.count }}
+              resources available {% endif %} {% endfor %}
+            </div>
+          </div>
+
+          <div class="program-card">
+            <div class="program-icon">
+              <i class="fas fa-hand-holding-heart"></i>
+            </div>
+            <h3>Inclusive Education & Early Intervention</h3>
+            <p>Specialized programs for inclusive learning environments</p>
+            <div class="content-count">
+              {% for count in content_counts %} {% if count.program_category ==
+              'Inclusive Education & Early Intervention' %} {{ count.count }}
+              resources available {% endif %} {% endfor %}
+            </div>
+          </div>
+          <div class="program-card">
+            <div class="program-icon">
+              <i class="fas fa-spa"></i>
+            </div>
+            <h3>Beautician Course</h3>
+            <p>
+              Professional training in beauty, skincare, and personal grooming
+            </p>
+            <div class="content-count">
+              {% for count in content_counts %} {% if count.program_category ==
+              'Beautician Course' %} {{ count.count }} resources available {%
+              endif %} {% endfor %}
+            </div>
+          </div>
+          <!-- Food and Beverages Associate -->
+          <div class="program-card">
+            <div class="program-icon">
+              <i class="fas fa-utensils"></i>
+            </div>
+            <h3>Food and Beverages Associate</h3>
+            <p>Training in food preparation, service, and hospitality</p>
+            <div class="content-count">
+              {% for count in content_counts %} {% if count.program_category ==
+              'Food and Beverages Associate' %} {{ count.count }} resources
+              available {% endif %} {% endfor %}
+            </div>
+          </div>
+
+          <!-- Nursing Course -->
+          <div class="program-card">
+            <div class="program-icon">
+              <i class="fas fa-user-nurse"></i>
+            </div>
+            <h3>Nursing Course</h3>
+            <p>
+              Basic training in patient care, nursing practices, and health
+              support
+            </p>
+            <div class="content-count">
+              {% for count in content_counts %} {% if count.program_category ==
+              'Nursing Course' %} {{ count.count }} resources available {% endif
+              %} {% endfor %}
+            </div>
+          </div>
+
+          <!-- Front Office Associate -->
+          <div class="program-card">
+            <div class="program-icon">
+              <i class="fas fa-concierge-bell"></i>
+            </div>
+            <h3>Front Office Associate</h3>
+            <p>Skills in reception, customer service, and office management</p>
+            <div class="content-count">
+              {% for count in content_counts %} {% if count.program_category ==
+              'Front Office Associate' %} {{ count.count }} resources available
+              {% endif %} {% endfor %}
+            </div>
+          </div>
+
+          <!-- Multi Skill Technician (Electrical) -->
+          <div class="program-card">
+            <div class="program-icon">
+              <i class="fas fa-tools"></i>
+            </div>
+            <h3>Multi Skill Technician (Electrical)</h3>
+            <p>
+              Hands-on training in electrical repair, maintenance, and
+              troubleshooting
+            </p>
+            <div class="content-count">
+              {% for count in content_counts %} {% if count.program_category ==
+              'Multi Skill Technician (Electrical)' %} {{ count.count }}
+              resources available {% endif %} {% endfor %}
+            </div>
+          </div>
+
+          <!-- Electrical Assembly Operator -->
+          <div class="program-card">
+            <div class="program-icon">
+              <i class="fas fa-bolt"></i>
+            </div>
+            <h3>Electrical Assembly Operator</h3>
+            <p>Training for assembling and wiring electrical control panels</p>
+            <div class="content-count">
+              {% for count in content_counts %} {% if count.program_category ==
+              'Electrical Assembly Operator' %} {{ count.count }} resources
+              available {% endif %} {% endfor %}
+            </div>
+          </div>
+
+          <div class="program-card">
+            <div class="program-icon">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <h3>Entrepreneurship & Life Skills Development</h3>
+            <p>Building business acumen and essential life skills</p>
+            <div class="content-count">
+              {% for count in content_counts %} {% if count.program_category ==
+              'Entrepreneurship & Life Skills Development' %} {{ count.count }}
+              resources available {% endif %} {% endfor %}
+            </div>
+          </div>
+
+          <div class="program-card">
+            <div class="program-icon">
+              <i class="fas fa-laptop-code"></i>
+            </div>
+            <h3>Soft Skills & IT Training</h3>
+            <p>Developing communication skills and technical expertise</p>
+            <div class="content-count">
+              {% for count in content_counts %} {% if count.program_category ==
+              'Soft Skills & IT Training' %} {{ count.count }} resources
+              available {% endif %} {% endfor %}
+            </div>
+          </div>
+
+          <div class="program-card">
+            <div class="program-icon">
+              <i class="fas fa-first-aid"></i>
+            </div>
+            <h3>Medical & Nursing Assistant Training</h3>
+            <p>Healthcare training programs for medical professionals</p>
+            <div class="content-count">
+              {% for count in content_counts %} {% if count.program_category ==
+              'Medical & Nursing Assistant Training' %} {{ count.count }}
+              resources available {% endif %} {% endfor %}
+            </div>
+          </div>
+
+          <div class="program-card">
+            <div class="program-icon">
+              <i class="fas fa-tshirt"></i>
+            </div>
+            <h3>Garment Making, Tailoring, Zardosi Work</h3>
+            <p>Textile and fashion design training programs</p>
+            <div class="content-count">
+              {% for count in content_counts %} {% if count.program_category ==
+              'Garment Making, Tailoring, Zardosi Work' %} {{ count.count }}
+              resources available {% endif %} {% endfor %}
+            </div>
+          </div>
+
+          <div class="program-card">
+            <div class="program-icon">
+              <i class="fas fa-briefcase"></i>
+            </div>
+            <h3>Job Placement & Industry Tie-ups</h3>
+            <p>Connecting trained individuals with employment opportunities</p>
+            <div class="content-count">
+              {% for count in content_counts %} {% if count.program_category ==
+              'Job Placement & Industry Tie-ups' %} {{ count.count }} resources
+              available {% endif %} {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>virinchis Learning Platform</h3>
+            <p>Empowering learners through innovative education technology.</p>
+          </div>
+          <div class="footer-section">
+            <h3>Contact Info</h3>
+            <p>
+              <i class="fas fa-map-marker-alt"></i> Address: D.No-2-27, Koderu
+              Post, Achanta Mandal, West Godavari District, Andhra Pradesh -
+              534269, India
+            </p>
+            <p>
+              <i class="fas fa-envelope"></i
+              ><a href="mailto:director@virinchiskills.org">
+                director@virinchiskills.org</a
+              >
+            </p>
+            <p>
+              <i class="fas fa-phone"></i> +91 83283 37186 <br />
+              +91 96664 33888
+            </p>
+          </div>
+          <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul>
+              <li><a href="{{ url_for('admin_panel') }}">Home</a></li>
+              <li><a href="{{ url_for('user_dashboard') }}">Dashboard</a></li>
+              <li><a href="#programs">Programs</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 Virinchi Learning Platform. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  </body>
+</html>

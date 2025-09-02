@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ program_category }} - Virinchi Learning Platform</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      /* Add your custom styles here */
+      /* ====== HEADER STYLES ====== */
+      .site-header {
+        background-color: #00695c; /* Dark green */
+        text-align: center;
+        padding: 20px 0 0 0;
+        color: #fff;
+        font-family: Arial, sans-serif;
+      }
+
+      .logo-container {
+        margin-bottom: 10px;
+      }
+
+      .site-logo {
+        height: 80px;
+        width: auto;
+      }
+
+      .site-title {
+        font-size: 28px;
+        font-weight: bold;
+        margin: 10px 0 5px;
+        color: #ffffff;
+      }
+
+      .site-tagline {
+        font-size: 16px;
+        margin-bottom: 15px;
+        color: #e0e0e0;
+      }
+
+      /* ====== NAVIGATION BAR ====== */
+      .navbar {
+        background-color: #004d40; /* Slightly darker green */
+        padding: 0px 0;
+      }
+
+      .nav-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .nav-menu {
+        display: flex;
+        gap: 20px;
+      }
+
+      .nav-link {
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: bold;
+        color: #fff;
+        padding: 6px 12px;
+        border-radius: 4px;
+        transition: background 0.3s;
+      }
+
+      .nav-link:hover,
+      .nav-link.active {
+        background-color: #00796b; /* Highlight green */
+        color: #fff;
+      }
+      /* Hero Section */
+      .hero {
+        background: linear-gradient(to right, #6a11cb, #2575fc);
+        color: white;
+        text-align: center;
+        padding: 60px 20px;
+      }
+
+      .hero h2 {
+        font-size: 28px;
+        font-weight: bold;
+      }
+
+      .hero p {
+        font-size: 16px;
+        margin-top: 10px;
+      }
+
+      /* About Section */
+      .about {
+        padding: 40px 20px;
+        display: flex;
+        justify-content: center;
+      }
+
+      .about-card {
+        background: white;
+        padding: 20px;
+        max-width: 900px;
+        border-radius: 8px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .about-card h3 {
+        color: #006d5b;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Animated Background -->
+    <div class="animated-bg"></div>
+
+    <!-- Navigation Bar -->
+    <!-- <nav class="navbar user-navbar">
+
+        <div class="nav-container">
+            <div class="nav-logo">
+            <a href="{{ url_for('index') }}">     
+             <img
+              src="{{ url_for('static', filename='images/logo.jpg') }}"
+              alt="LMMS Logo"
+              class="logo-img"
+            />
+            <span class="logo-text">LMMS</span></a>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="{{ url_for('user_dashboard') }}" class="nav-link active">Dashboard</a>
+                <a href="#programs" class="nav-link">Programs</a>
+                <a href="{{ url_for('logout') }}" class="nav-link">Logout</a>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav> -->
+    <!-- Header Section -->
+    <header class="site-header">
+      <div class="logo-container">
+        <img
+          src="{{ url_for('static', filename='images/logo.jpg') }}"
+          alt="Logo"
+          class="site-logo"
+        />
+      </div>
+      <h1 class="site-title">Virinchi Educational and Welfare Society</h1>
+      <p class="site-tagline">Answer for Future</p>
+
+      <!-- Navigation Bar -->
+      <nav class="navbar">
+        <div class="nav-container">
+          <div class="nav-menu" id="nav-menu">
+            <a href="{{ url_for('index') }}" class="nav-link active">Home</a>
+            <a href="#about" class="nav-link">About</a>
+            <a href="#programs" class="nav-link">Programs</a>
+            <a href="#contact" class="nav-link">Contact</a>
+            <a href="{{ url_for('logout') }}" class="nav-link">Logout</a>
+            <!-- <a href="{{ url_for('user_login') }}" class="nav-link">User Login</a>
+                <a href="{{ url_for('admin_login') }}" class="nav-link">Admin Login</a>
+                <a href="{{ url_for('signup') }}" class="nav-link">Signup</a> -->
+          </div>
+        </div>
+      </nav>
+    </header>
+    <!-- Hero Section -->
+    <section class="hero">
+      <h2>Empowering Communities through Education & Skill Development</h2>
+      <p>Promoting inclusive growth, opportunity, and sustainability</p>
+    </section>
+
+    <!-- About Us -->
+    <section class="about" id="about">
+      <div class="about-card">
+        <h3>About Us</h3>
+        <p>
+          Established in 2016 and headquartered in Achanta, Andhra Pradesh,
+          Virinchi Educational and Welfare Society is a registered non-profit
+          dedicated to promoting the welfare of Persons with Disabilities
+          (PWDs), empowering marginalized groups through education, skill
+          development, and employment support.
+        </p>
+      </div>
+    </section>
+    <!-- Hero Section -->
+    <section class="hero program-hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1 class="hero-title">{{ program_category }}</h1>
+          <p class="hero-description">
+            Explore all learning resources for this program
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Program Content Section -->
+    <section class="program-content">
+      <div class="container">
+        <div class="content-grid">
+          <!-- Course Materials -->
+         <div class="content-section">
+    <h2 class="section-title">Course Materials</h2>
+
+    {% if content %}
+    <div class="materials-list">
+        {% for item in content %} 
+        {% if item.file_link %}
+        <div class="material-item">
+            <div class="material-icon">
+                <i class="fas fa-file-pdf"></i>
+            </div>
+            <div class="material-info">
+                <h3>{{ item.title }}</h3>
+                <p>{{ item.description }}</p>
+            </div>
+            <div class="material-actions">
+                <!-- View PDF Button -->
+                <button class="btn btn-info view-pdf-btn" data-filename="{{ item.file_link }}">
+                    <i class="fas fa-eye"></i> View
+                </button>
+                <!-- Download PDF Button -->
+                <a href="{{ url_for('download_file', filename=item.file_link) }}" class="btn btn-primary">
+                    <i class="fas fa-download"></i> Download
+                </a>
+            </div>
+        </div>
+        {% endif %} 
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="empty-state">
+        <i class="fas fa-folder-open"></i>
+        <h3>No materials available yet</h3>
+        <p>Check back later for course materials</p>
+    </div>
+    {% endif %}
+</div>
+
+<!-- PDF Viewer Modal -->
+<div id="pdf-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>PDF Viewer</h3>
+            <span class="close">&times;</span>
+        </div>
+        <div class="modal-body">
+            <iframe id="pdf-viewer" width="100%" height="500px" frameborder="0"></iframe>
+        </div>
+        <div class="modal-footer">
+            <a id="pdf-download-link" class="btn btn-primary" download>
+                <i class="fas fa-download"></i> Download
+            </a>
+        </div>
+    </div>
+</div>
+
+          <!-- Video Lectures -->
+          <div class="content-section">
+            <h2 class="section-title">Video Lectures</h2>
+
+            {% if content %}
+            <div class="videos-grid">
+              {% for item in content %} {% if item.video_link %}
+              <div class="video-item">
+                <div class="video-container">
+                  {% if 'youtube.com/embed/' in item.video_link %}
+                  <iframe
+                    src="{{ item.video_link }}"
+                    frameborder="0"
+                    allowfullscreen
+                  ></iframe>
+                  {% else %}
+                  <div class="video-error">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <p>
+                      Invalid video URL format. Please use a valid YouTube embed
+                      URL.
+                    </p>
+                    <p>Current URL: {{ item.video_link }}</p>
+                  </div>
+                  {% endif %}
+                </div>
+                <div class="video-info">
+                  <h3>{{ item.title }}</h3>
+                  <p>{{ item.description }}</p>
+                </div>
+              </div>
+              {% endif %} {% endfor %}
+            </div>
+            {% else %}
+            <div class="empty-state">
+              <i class="fas fa-video"></i>
+              <h3>No videos available yet</h3>
+              <p>Check back later for video lectures</p>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+
+        <!-- Additional Resources -->
+        <div class="content-section">
+          <h2 class="section-title">Additional Resources</h2>
+
+          <div class="resources-grid">
+            <div class="resource-card">
+              <div class="resource-icon">
+                <i class="fas fa-tasks"></i>
+              </div>
+              <h3>Practice Exercises</h3>
+              <p>
+                Reinforce your learning with practical exercises and assignments
+                designed to test your understanding.
+              </p>
+            </div>
+
+            <div class="resource-card">
+              <div class="resource-icon">
+                <i class="fas fa-book"></i>
+              </div>
+              <h3>Case Studies</h3>
+              <p>
+                Explore real-world scenarios and case studies that demonstrate
+                practical applications of the concepts.
+              </p>
+            </div>
+
+            <div class="resource-card">
+              <div class="resource-icon">
+                <i class="fas fa-handshake"></i>
+              </div>
+              <h3>Industry Tie-ups</h3>
+              <p>
+                Learn about our industry partnerships and opportunities for
+                practical experience and job placement.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>virinchis Learning Platform</h3>
+            <p>Empowering learners through innovative education technology.</p>
+          </div>
+          <div class="footer-section">
+            <h3>Contact Info</h3>
+            <p>
+              <i class="fas fa-map-marker-alt"></i> Address: D.No-2-27, Koderu Post, Achanta Mandal, West Godavari District, Andhra Pradesh - 534269, India
+            </p>
+                <p><i class="fas fa-envelope"></i><a href="mailto:director@virinchiskills.org"> director@virinchiskills.org</a></p>
+            <p><i class="fas fa-phone"></i> +91 83283 37186 <br> +91 96664 33888</p>
+        
+          </div>
+          <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul>
+              <li><a href="{{ url_for('index') }}">Home</a></li>
+              <li><a href="{{ url_for('user_dashboard') }}">Dashboard</a></li>
+              <li><a href="#programs">Programs</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 Virinchi Learning Platform. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script>
+    // PDF Viewer functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const modal = document.getElementById('pdf-modal');
+        const pdfViewer = document.getElementById('pdf-viewer');
+        const pdfDownloadLink = document.getElementById('pdf-download-link');
+        const closeBtn = document.querySelector('.close');
+        const viewButtons = document.querySelectorAll('.view-pdf-btn');
+        
+        // Open modal when View button is clicked
+        viewButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const filename = this.getAttribute('data-filename');
+                const viewUrl = "{{ url_for('view_pdf', filename='') }}" + filename;
+                const downloadUrl = "{{ url_for('download_file', filename='') }}" + filename;
+                
+                // Set PDF source and show modal
+                pdfViewer.src = viewUrl;
+                pdfDownloadLink.href = downloadUrl;
+                modal.style.display = 'block';
+                
+                // Prevent body scrolling when modal is open
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        
+        // Close modal when X is clicked
+        closeBtn.addEventListener('click', function() {
+            modal.style.display = 'none';
+            pdfViewer.src = '';
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Close modal when clicking outside the content
+        window.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+                pdfViewer.src = '';
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && modal.style.display === 'block') {
+                modal.style.display = 'none';
+                pdfViewer.src = '';
+                document.body.style.overflow = 'auto';
+            }
+        });
+    });
+</script>
+  </body>
+</html>
