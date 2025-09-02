@@ -81,6 +81,43 @@
         background-color: #00796b; /* Highlight green */
         color: #fff;
       }
+      .nav-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.bar {
+  width: 25px;
+  height: 3px;
+  background-color: black;
+  margin: 3px 0;
+  transition: 0.3s;
+  border-radius: 3px;
+}
+
+/* Mobile View */
+@media (max-width: 768px) {
+  .nav-menu {
+    display: none;
+    flex-direction: column;
+    background: #00695c;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+
+  .nav-menu.active {
+    display: flex;
+  }
+
+  .nav-toggle {
+    display: flex;
+  }
+}
       /* Hero Section */
       .hero {
         background: linear-gradient(to right, #6a11cb, #2575fc);
@@ -123,31 +160,6 @@
     <!-- Animated Background -->
     <div class="animated-bg"></div>
 
-    <!-- Navigation Bar -->
-    <!-- <nav class="navbar user-navbar">
-
-        <div class="nav-container">
-            <div class="nav-logo">
-            <a href="{{ url_for('index') }}">     
-             <img
-              src="{{ url_for('static', filename='images/logo.jpg') }}"
-              alt="LMMS Logo"
-              class="logo-img"
-            />
-            <span class="logo-text">LMMS</span></a>
-            </div>
-            <div class="nav-menu" id="nav-menu">
-                <a href="{{ url_for('user_dashboard') }}" class="nav-link active">Dashboard</a>
-                <a href="#programs" class="nav-link">Programs</a>
-                <a href="{{ url_for('logout') }}" class="nav-link">Logout</a>
-            </div>
-            <div class="nav-toggle" id="nav-toggle">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-        </div>
-    </nav> -->
     <!-- Header Section -->
     <header class="site-header">
       <div class="logo-container">
@@ -169,10 +181,12 @@
             <a href="#programs" class="nav-link">Programs</a>
             <a href="#contact" class="nav-link">Contact</a>
             <a href="{{ url_for('logout') }}" class="nav-link">Logout</a>
-            <!-- <a href="{{ url_for('user_login') }}" class="nav-link">User Login</a>
-                <a href="{{ url_for('admin_login') }}" class="nav-link">Admin Login</a>
-                <a href="{{ url_for('signup') }}" class="nav-link">Signup</a> -->
           </div>
+           <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
         </div>
       </nav>
     </header>
@@ -440,3 +454,4 @@
 </script>
   </body>
 </html>
+
