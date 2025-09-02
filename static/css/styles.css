@@ -6,7 +6,7 @@
     --danger: #f72585;
     --warning: #ffc107;
     --light: #f8f9fa;
-    --dark: #212529;
+    --dark: #004d40;
     --gray: #6c757d;
     --gradient: linear-gradient(135deg, #6C63FF 0%, #36D1DC 100%);
     --gradient-secondary: linear-gradient(135deg, #FF6584 0%, #FFC107 100%);
@@ -1109,4 +1109,5 @@ body {
         #pdf-viewer {
             height: 400px;
         }
+
     }
